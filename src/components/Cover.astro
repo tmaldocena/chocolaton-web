@@ -1,0 +1,100 @@
+---
+const logoEsac = '/images/esac.svg';
+const logoPehuen = '/images/pehuen.svg';
+const logoComuna = '/images/comuna.svg';
+const eventDate = new Date(2026, 6, 4); // July 4, 2026 (month is 0-indexed)
+---
+
+<section id="cover" class="min-h-dvh relative flex flex-col text-center">
+  <video autoplay muted loop playsinline class="fixed inset-0 w-full h-full object-cover -z-10">
+    <source src="/4458598-hd_1920_1080_24fps.mp4" type="video/mp4" />
+  </video>
+  <div class="absolute inset-0 bg-brown/60 z-0"></div>
+
+  <div class="flex justify-between items-start w-full px-13 max-md:px-5 shrink-0 relative z-1 pt-16 max-md:pt-8">
+    <span class="font-['Barlow_Condensed',sans-serif] text-[22px] max-md:text-[16px] font-900 text-cream-pale tracking-[0.04em]">4/07</span>
+    <div class="flex gap-4 items-center justify-center max-md:gap-2">
+      <img src={logoEsac} alt="ESAC" class="h-[56px] max-md:h-[46px] w-auto opacity-95" style="filter:brightness(0) invert(1)" />
+      <img src={logoPehuen} alt="Pehuen Coffee Roasters" class="h-[56px] max-md:h-[46px] w-auto opacity-95" style="filter:brightness(0) invert(1)" />
+      <img src={logoComuna} alt="Comuna Club" class="h-[56px] max-md:h-[46px] w-auto opacity-95" style="filter:brightness(0) invert(1)" />
+    </div>
+    <span class="font-['Barlow_Condensed',sans-serif] text-[16px] max-md:text-[12px] font-900 text-cream-pale text-right leading-[1.1] tracking-[0.04em] max-md:hidden">
+      COMUNA<br />CLUB
+    </span>
+  </div>
+
+  <div class="flex-1 flex flex-col justify-center items-center px-5 relative z-1">
+    <div class="font-['Barlow_Condensed',sans-serif] text-[16px] max-md:text-[13px] font-700 text-cream-pale tracking-[0.2em] uppercase mb-1">
+      Feria de Chocolate
+    </div>
+    <div class="font-['Barlow_Condensed',sans-serif] text-[13px] max-md:text-[11px] font-500 text-cream-pale tracking-[0.15em] uppercase mb-3 opacity-70">
+      Segunda Edición
+    </div>
+
+    <div class="font-['Barlow_Condensed',sans-serif] text-[clamp(48px,10vw,130px)] max-md:text-[clamp(36px,15vw,80px)] font-900 text-cream-pale leading-[0.82] tracking-[-0.01em] uppercase flex flex-col items-center">
+      <span class="fade-up">CHO</span>
+      <span class="fade-up fade-up-2">CO</span>
+      <span class="fade-up fade-up-3">LA</span>
+      <span class="fade-up fade-up-4">T<span class="drip-container"><span class="drip-filter">O</span><span class="drip-drops"><span class="drip-drop"></span><span class="drip-drop drip-drop-2"></span><span class="drip-drop drip-drop-3"></span><span class="drip-drop drip-drop-4"></span></span></span>N</span>
+    </div>
+
+    <div class="mt-6 fade-up fade-up-4 relative z-2" id="countdown">
+      <div class="flex gap-4 max-md:gap-3 justify-center" id="countdown-display">
+        <div class="flex flex-col items-center">
+          <span class="font-['Barlow_Condensed',sans-serif] text-[clamp(28px,5vw,52px)] font-900 text-cream-pale leading-[1]" id="countdown-days">00</span>
+          <span class="font-['Barlow',sans-serif] text-[10px] text-cream-pale/60 uppercase tracking-[0.15em]">Días</span>
+        </div>
+        <span class="font-['Barlow_Condensed',sans-serif] text-[clamp(28px,5vw,52px)] font-900 text-cream-pale/30 leading-[1]">:</span>
+        <div class="flex flex-col items-center">
+          <span class="font-['Barlow_Condensed',sans-serif] text-[clamp(28px,5vw,52px)] font-900 text-cream-pale leading-[1]" id="countdown-hours">00</span>
+          <span class="font-['Barlow',sans-serif] text-[10px] text-cream-pale/60 uppercase tracking-[0.15em]">Horas</span>
+        </div>
+        <span class="font-['Barlow_Condensed',sans-serif] text-[clamp(28px,5vw,52px)] font-900 text-cream-pale/30 leading-[1]">:</span>
+        <div class="flex flex-col items-center">
+          <span class="font-['Barlow_Condensed',sans-serif] text-[clamp(28px,5vw,52px)] font-900 text-cream-pale leading-[1]" id="countdown-minutes">00</span>
+          <span class="font-['Barlow',sans-serif] text-[10px] text-cream-pale/60 uppercase tracking-[0.15em]">Min</span>
+        </div>
+        <span class="font-['Barlow_Condensed',sans-serif] text-[clamp(28px,5vw,52px)] font-900 text-cream-pale/30 leading-[1]">:</span>
+        <div class="flex flex-col items-center">
+          <span class="font-['Barlow_Condensed',sans-serif] text-[clamp(28px,5vw,52px)] font-900 text-cream-pale leading-[1]" id="countdown-seconds">00</span>
+          <span class="font-['Barlow',sans-serif] text-[10px] text-cream-pale/60 uppercase tracking-[0.15em]">Seg</span>
+        </div>
+      </div>
+      <div class="font-['Barlow_Condensed',sans-serif] text-[13px] text-cream-pale/50 uppercase tracking-[0.15em] mt-1">
+        para el Chocolatón
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const eventDate = new Date(2026, 6, 4).getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = eventDate - now;
+
+        if (diff <= 0) {
+          document.getElementById('countdown-days').textContent = '00';
+          document.getElementById('countdown-hours').textContent = '00';
+          document.getElementById('countdown-minutes').textContent = '00';
+          document.getElementById('countdown-seconds').textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown-days').textContent = String(days).padStart(2, '0');
+        document.getElementById('countdown-hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('countdown-minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('countdown-seconds').textContent = String(seconds).padStart(2, '0');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    })();
+  </script>
+</section>

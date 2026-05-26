@@ -1,0 +1,67 @@
+<section id="experiencia" class="min-h-dvh relative flex flex-col justify-center items-center overflow-hidden text-center bg-bg-que-es">
+  <img src="/images/tazon.svg" alt="" class="absolute max-md:hidden w-[260px] h-auto -left-16 top-16 rotate-[15deg]" />
+  <img src="/images/beans.svg" alt="" class="absolute max-md:hidden w-[300px] h-auto -right-20 bottom-20 -rotate-[10deg]" />
+  <div class="relative z-1 px-13 max-md:px-6 max-w-[800px]">
+    <h2 class="font-['Barlow_Condensed',sans-serif] text-[clamp(48px,14vw,180px)] max-md:text-[clamp(36px,14vw,100px)] font-900 text-brown uppercase leading-[0.85] tracking-[-0.01em] mb-8 max-md:mb-6 fade-up">
+      Experiencia<br />2025
+    </h2>
+    <p class="text-[clamp(16px,2vw,24px)] max-md:text-[14px] text-brown-dark font-400 leading-[1.6] mb-10 fade-up fade-up-2">
+      El <strong class="font-800 text-brown">Chocolatón</strong> es producido por el mismo equipo organizador de la <strong class="font-800 text-brown">Copa Súper Tazón</strong>, el campeonato de baristas de San Luis, que reunió a más de 700 personas en su edición 2025.
+    </p>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-[780px] mx-auto" id="stats-grid">
+      <div class="flex flex-col items-center">
+        <span class="stat-number font-['Barlow_Condensed',sans-serif] text-[clamp(36px,4.5vw,72px)] font-900 text-brown leading-[1]" data-target="1200">0</span>
+        <span class="font-['Barlow',sans-serif] text-[clamp(11px,1.1vw,14px)] text-brown-dark/70 font-500 leading-tight mt-1">tickets vendidos</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span class="stat-number font-['Barlow_Condensed',sans-serif] text-[clamp(36px,4.5vw,72px)] font-900 text-brown leading-[1]" data-target="1500">0</span>
+        <span class="font-['Barlow',sans-serif] text-[clamp(11px,1.1vw,14px)] text-brown-dark/70 font-500 leading-tight mt-1">personas presentes</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span class="stat-number font-['Barlow_Condensed',sans-serif] text-[clamp(36px,4.5vw,72px)] font-900 text-brown leading-[1]" data-target="100">0</span>
+        <span class="font-['Barlow',sans-serif] text-[clamp(11px,1.1vw,14px)] text-brown-dark/70 font-500 leading-tight mt-1">litros de chocolate caliente</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span class="stat-number font-['Barlow_Condensed',sans-serif] text-[clamp(36px,4.5vw,72px)] font-900 text-brown leading-[1]" data-target="1000">0</span>
+        <span class="font-['Barlow',sans-serif] text-[clamp(11px,1.1vw,14px)] text-brown-dark/70 font-500 leading-tight mt-1">porciones dulces vendidas</span>
+      </div>
+      <div class="flex flex-col items-center col-span-2 md:col-span-1">
+        <span class="stat-number font-['Barlow_Condensed',sans-serif] text-[clamp(36px,4.5vw,72px)] font-900 text-brown leading-[1]" data-target="500">0</span>
+        <span class="font-['Barlow',sans-serif] text-[clamp(11px,1.1vw,14px)] text-brown-dark/70 font-500 leading-tight mt-1">cafés y chocolates vendidos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const section = document.getElementById('experiencia');
+  const numbers = section.querySelectorAll('.stat-number');
+
+  let animated = false;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        numbers.forEach(el => {
+          const target = parseInt(el.dataset.target);
+          const duration = 2000;
+          const start = performance.now();
+
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * target);
+            el.textContent = current >= 1000 ? current.toLocaleString('es-AR') : current;
+            if (progress < 1) requestAnimationFrame(update);
+          }
+
+          requestAnimationFrame(update);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(section);
+</script>

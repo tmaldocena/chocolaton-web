@@ -1,0 +1,119 @@
+<section id="sponsors" class="min-h-dvh relative flex flex-col md:flex-row justify-between items-stretch overflow-hidden text-left px-13 max-md:px-6 pt-16 pb-10 md:pb-0 bg-bg-who-alt">
+  <div class="max-w-[640px] flex flex-col justify-center py-10 max-md:py-0">
+    <h2 class="font-['Barlow_Condensed',sans-serif] text-[clamp(36px,10vw,130px)] max-md:text-[clamp(32px,10vw,70px)] font-900 text-brown uppercase leading-[0.88] tracking-[-0.01em] mb-9 max-md:mb-5 fade-up">
+      ¿Por qué ser<br />Main Sponsor?
+    </h2>
+    <div class="fade-up fade-up-2">
+      <p class="text-[clamp(14px,2vw,20px)] max-md:text-[14px] text-brown-dark leading-[1.65] font-700 mb-4">
+        Ser <strong class="font-800 text-brown">Main Sponsor</strong> implica formar parte de una experiencia cultural y gastronómica en crecimiento, con fuerte impacto visual, presencia digital y llegada a nuevos públicos.
+      </p>
+      <p class="text-[clamp(14px,2vw,20px)] max-md:text-[14px] text-brown-dark leading-[1.65] font-700">
+        La marca contará con una participación destacada dentro de toda la comunicación y experiencia del evento, asociándose a una propuesta innovadora y con gran proyección regional.
+      </p>
+    </div>
+  </div>
+  <div class="relative max-md:hidden w-[700px] h-[400px] shrink-0">
+    <div class="bg-brown p-[6px] pb-10 shadow-[4px_6px_20px_rgba(0,0,0,0.35)] w-[340px] aspect-[3/4] flex items-stretch absolute -rotate-[6deg] z-10 cursor-pointer gallery-trigger" style="top:10%;right:-2%" data-index="0">
+      <img src="/images/polaroid1.jpg" alt="Foto 1" class="w-full h-full object-cover" />
+    </div>
+    <div class="bg-brown p-[6px] pb-10 shadow-[4px_6px_20px_rgba(0,0,0,0.35)] w-[340px] aspect-[3/4] flex items-stretch absolute rotate-[4deg] z-20 cursor-pointer gallery-trigger" style="top:22%;right:18%" data-index="1">
+      <img src="/images/polaroid2.jpg" alt="Foto 2" class="w-full h-full object-cover" />
+    </div>
+    <div class="bg-brown p-[6px] pb-10 shadow-[4px_6px_20px_rgba(0,0,0,0.35)] w-[340px] aspect-[3/4] flex items-stretch absolute -rotate-[2deg] z-30 cursor-pointer gallery-trigger" style="top:35%;right:5%" data-index="2">
+      <img src="/images/polaroid3.jpg" alt="Foto 3" class="w-full h-full object-cover" />
+    </div>
+    <div class="bg-brown p-[6px] pb-10 shadow-[4px_6px_20px_rgba(0,0,0,0.35)] w-[340px] aspect-[3/4] flex items-stretch absolute rotate-[7deg] z-40 cursor-pointer gallery-trigger" style="top:50%;right:25%" data-index="3">
+      <img src="/images/polaroid4.jpg" alt="Foto 4" class="w-full h-full object-cover" />
+    </div>
+    <div class="bg-brown p-[6px] pb-10 shadow-[4px_6px_20px_rgba(0,0,0,0.35)] w-[340px] aspect-[3/4] flex items-stretch absolute -rotate-[4deg] z-50 cursor-pointer gallery-trigger" style="top:66%;right:1%" data-index="4">
+      <img src="/images/polaroid5.jpg" alt="Foto 5" class="w-full h-full object-cover" />
+    </div>
+  </div>
+  <div class="md:hidden grid grid-cols-3 gap-3 w-full mt-6">
+    <div class="bg-brown p-[4px] pb-6 shadow-[2px_3px_10px_rgba(0,0,0,0.25)] aspect-[3/4] flex items-stretch relative -rotate-[3deg] cursor-pointer gallery-trigger" data-index="0">
+      <img src="/images/polaroid1.jpg" alt="Foto 1" class="w-full h-full object-cover" />
+    </div>
+    <div class="bg-brown p-[4px] pb-6 shadow-[2px_3px_10px_rgba(0,0,0,0.25)] aspect-[3/4] flex items-stretch relative rotate-[2deg] cursor-pointer gallery-trigger" data-index="1">
+      <img src="/images/polaroid2.jpg" alt="Foto 2" class="w-full h-full object-cover" />
+    </div>
+    <div class="bg-brown p-[4px] pb-6 shadow-[2px_3px_10px_rgba(0,0,0,0.25)] aspect-[3/4] flex items-stretch relative -rotate-[1deg] cursor-pointer gallery-trigger" data-index="2">
+      <img src="/images/polaroid3.jpg" alt="Foto 3" class="w-full h-full object-cover" />
+    </div>
+    <div class="bg-brown p-[4px] pb-6 shadow-[2px_3px_10px_rgba(0,0,0,0.25)] aspect-[3/4] flex items-stretch relative rotate-[4deg] cursor-pointer gallery-trigger" data-index="3">
+      <img src="/images/polaroid4.jpg" alt="Foto 4" class="w-full h-full object-cover" />
+    </div>
+    <div class="bg-brown p-[4px] pb-6 shadow-[2px_3px_10px_rgba(0,0,0,0.25)] aspect-[3/4] flex items-stretch relative -rotate-[2deg] cursor-pointer gallery-trigger" data-index="4">
+      <img src="/images/polaroid5.jpg" alt="Foto 5" class="w-full h-full object-cover" />
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    const images = [
+      '/images/polaroid1.jpg',
+      '/images/polaroid2.jpg',
+      '/images/polaroid3.jpg',
+      '/images/polaroid4.jpg',
+      '/images/polaroid5.jpg',
+    ];
+
+    let currentIndex = 0;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'fixed inset-0 z-[9999] bg-black/80 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300';
+    overlay.innerHTML = `
+      <button class="absolute top-4 right-4 text-white/80 hover:text-white text-4xl leading-none cursor-pointer z-10" id="gallery-close">&times;</button>
+      <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-5xl leading-none cursor-pointer z-10" id="gallery-prev">&lsaquo;</button>
+      <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-5xl leading-none cursor-pointer z-10" id="gallery-next">&rsaquo;</button>
+      <img id="gallery-img" class="max-w-[90vw] max-h-[90vh] object-contain" src="" alt="" />
+    `;
+    document.body.appendChild(overlay);
+
+    const img = overlay.querySelector('#gallery-img');
+    const closeBtn = overlay.querySelector('#gallery-close');
+    const prevBtn = overlay.querySelector('#gallery-prev');
+    const nextBtn = overlay.querySelector('#gallery-next');
+
+    function openGallery(index) {
+      currentIndex = index;
+      img.src = images[currentIndex];
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeGallery() {
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      img.src = images[currentIndex];
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      img.src = images[currentIndex];
+    }
+
+    document.querySelectorAll('.gallery-trigger').forEach(el => {
+      el.addEventListener('click', () => openGallery(parseInt(el.dataset.index)));
+    });
+
+    closeBtn.addEventListener('click', closeGallery);
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeGallery();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (overlay.classList.contains('opacity-0')) return;
+      if (e.key === 'Escape') closeGallery();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+    });
+  })();
+</script>

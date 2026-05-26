@@ -1,17 +1,43 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Cover from '../components/Cover.astro';
+import QueEs from '../components/QueEs.astro';
+import Experiencia from '../components/Experiencia.astro';
+import Actividades from '../components/Actividades.astro';
+import FeriantesWho from '../components/FeriantesWho.astro';
+import SponsorWhy from '../components/SponsorWhy.astro';
+import OfertaFeriantes from '../components/OfertaFeriantes.astro';
+import BeneficiosSponsor from '../components/BeneficiosSponsor.astro';
+import Valor from '../components/Valor.astro';
+import Contacto from '../components/Contacto.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <Nav />
+  <main>
+    <Cover />
+    <QueEs />
+    <Experiencia />
+    <Actividades />
+    <FeriantesWho />
+    <SponsorWhy />
+    <OfertaFeriantes />
+    <BeneficiosSponsor />
+    <Valor />
+    <Contacto />
+  </main>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</Layout>

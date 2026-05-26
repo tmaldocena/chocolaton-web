@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chocolatón — Feria de Chocolate · San Luis · 4 de Julio 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown: #3a1a0a;
+    --brown-dark: #2a1006;
+    --cream: #e8d5c0;
+    --cream-light: #f0e0cc;
+    --cream-pale: #f7ede0;
+    --text-body: #2a1006;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV sticky */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(58,26,10,0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 56px;
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--cream-pale);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+  }
+  .nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    background: var(--cream-pale);
+    color: var(--brown);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ===== SECTION BASE ===== */
+  /* Each section = full-screen slide like the PDF */
+  .slide {
+    min-height: 100dvh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  /* Texture overlay — simulates the PDF paper grain */
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.07;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .slide > * { position: relative; z-index: 2; }
+
+  /* BG photo overlay */
+  .slide-bg-photo {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+    z-index: 0;
+  }
+
+  /* ===== SLIDE 1: COVER ===== */
+  .slide-cover {
+    background-color: var(--cream-pale);
+    padding-top: 56px; /* nav height */
+  }
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 32px 52px 0;
+    position: absolute;
+    top: 56px;
+    left: 0;
+  }
+  .cover-date {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--brown);
+    letter-spacing: 0.04em;
+  }
+  .cover-org {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--brown);
+    text-align: right;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+  }
+  .cover-logos {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .logo-placeholder {
+    background: var(--brown);
+    border-radius: 50%;
+    width: 52px; height: 52px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--cream-pale);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .cover-subtitle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brown);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .cover-subtitle-2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--brown);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.7;
+  }
+  .cover-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(140px, 22vw, 260px);
+    font-weight: 900;
+    color: var(--brown);
+    line-height: 0.82;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* Chocolate drip on the Ó — via text-shadow trick */
+  .cover-title .drip {
+    position: relative;
+    display: inline-block;
+  }
+  .cover-banner {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    background: var(--brown);
+    padding: 20px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cover-banner-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--cream);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  /* Tab selector - switch between Feriantes and Main Sponsor */
+  .tab-bar {
+    display: flex;
+    gap: 0;
+    margin-top: 24px;
+    border: 2px solid var(--brown);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .tab-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 36px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+    background: transparent;
+    color: var(--brown);
+  }
+  .tab-btn.active {
+    background: var(--brown);
+    color: var(--cream-pale);
+  }
+
+  /* ===== SLIDE 2: QUE ES ===== */
+  .slide-que-es {
+    background-color: #c8b09a;
+  }
+  .slide-que-es .slide-bg-photo {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect fill='%23a08060' width='100%25' height='100%25'/%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+  .que-es-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(72px, 12vw, 160px);
+    font-weight: 900;
+    color: var(--brown);
+    text-transform: uppercase;
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    margin-bottom: 48px;
+    padding: 0 40px;
+  }
+  .que-es-body {
+    max-width: 820px;
+    padding: 0 40px;
+  }
+  .que-es-body p {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--brown-dark);
+    line-height: 1.65;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+  .que-es-org {
+    margin-top: 32px;
+  }
+  .que-es-org strong {
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+  .que-es-org span {
+    display: block;
+    font-size: 17px;
+    color: var(--brown-dark);
+    line-height: 1.9;
+  }
+
+  /* ===== SLIDE 3: EXPERIENCIA 2025 ===== */
+  .slide-exp {
+    background-color: #c8b09a;
+  }
+  .exp-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(80px, 14vw, 180px);
+    font-weight: 900;
+    color: var(--brown);
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -0.01em;
+    margin-bottom: 40px;
+  }
+  .exp-stats {
+    max-width: 680px;
+    padding: 0 40px;
+  }
+  .exp-stats p {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--brown-dark);
+    line-height: 2.0;
+    font-weight: 400;
+  }
+  .exp-stats strong { font-weight: 800; color: var(--brown); }
+  .exp-underline {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+  .exp-footnote {
+    max-width: 680px;
+    padding: 0 40px;
+    margin-top: 28px;
+    font-size: clamp(15px, 1.5vw, 18px);
+    color: var(--brown-dark);
+    line-height: 1.65;
+    text-align: center;
+  }
+  .exp-footnote strong { font-weight: 800; }
+
+  /* ===== SLIDE 4: ACTIVIDADES 2026 ===== */
+  .slide-act {
+    background-color: #d4bfad;
+  }
+  .act-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(80px, 13vw, 170px);
+    font-weight: 900;
+    color: var(--brown);
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -0.01em;
+    margin-bottom: 40px;
+  }
+  .act-list {
+    max-width: 600px;
+    padding: 0 40px;
+    text-align: center;
+  }
+  .act-list p {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--brown-dark);
+    line-height: 2.1;
+  }
+  .act-list strong { font-weight: 800; color: var(--brown); }
+
+  /* ===== SLIDE 5: QUIENES / POR QUE ===== */
+  .slide-who {
+    background-color: var(--cream-pale);
+    align-items: flex-start;
+    text-align: left;
+    padding: 80px 52px 40px;
+  }
+  .who-content { max-width: 760px; }
+  .who-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(60px, 10vw, 130px);
+    font-weight: 900;
+    color: var(--brown);
+    text-transform: uppercase;
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    margin-bottom: 36px;
+  }
+  .who-body p {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--brown-dark);
+    line-height: 1.65;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  /* Polaroid photos row */
+  .polaroid-row {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    display: flex;
+    gap: 0;
+    align-items: flex-end;
+    height: 42%;
+    padding: 0 20px;
+    z-index: 2;
+    overflow: hidden;
+  }
+  .polaroid {
+    background: var(--brown);
+    padding: 6px 6px 28px 6px;
+    box-shadow: 4px 6px 20px rgba(0,0,0,0.35);
+    flex: 1;
+    max-width: 340px;
+    height: 100%;
+    display: flex; align-items: stretch;
+    position: relative;
+  }
+  .polaroid:nth-child(1) { transform: rotate(-4deg) translateY(10px); margin-right: -20px; }
+  .polaroid:nth-child(2) { transform: rotate(2deg) translateY(0px); z-index: 3; }
+  .polaroid:nth-child(3) { transform: rotate(-2deg) translateY(5px); margin-left: -20px; }
+  .polaroid-inner {
+    width: 100%;
+    background: #9a8070;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    overflow: hidden;
+  }
+  /* Actual photo placeholders with gradient to simulate event photos */
+  .pol-img-1 { background: linear-gradient(135deg, #7a6050 0%, #a08060 40%, #c0a080 100%); }
+  .pol-img-2 { background: linear-gradient(135deg, #604030 0%, #906040 40%, #b07050 100%); }
+  .pol-img-3 { background: linear-gradient(135deg, #504030 0%, #807050 40%, #a09060 100%); }
+
+  /* ===== SLIDE 6: QUE TE OFRECEMOS / BENEFICIOS ===== */
+  .slide-offer {
+    background-color: #c8b09a;
+    align-items: flex-start;
+    text-align: left;
+    padding: 80px 52px;
+  }
+  .offer-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(60px, 10vw, 140px);
+    font-weight: 900;
+    color: var(--brown);
+    text-transform: uppercase;
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    margin-bottom: 40px;
+  }
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 60px;
+  }
+  .checklist li {
+    list-style: none;
+    font-size: clamp(18px, 2.2vw, 24px);
+    color: var(--brown-dark);
+    font-weight: 400;
+    line-height: 1.5;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .checklist li::before {
+    content: '✓';
+    font-weight: 800;
+    color: var(--brown);
+    font-size: 0.9em;
+    flex-shrink: 0;
+  }
+  .checklist li strong { font-weight: 800; color: var(--brown); }
+
+  /* Bullet list variant for sponsors */
+  .bullet-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 60px; }
+  .bullet-list li {
+    list-style: none;
+    font-size: clamp(18px, 2.2vw, 24px);
+    color: var(--brown-dark);
+    font-weight: 700;
+    line-height: 1.5;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .bullet-list li::before {
+    content: '•';
+    font-weight: 800;
+    color: var(--brown);
+    font-size: 1em;
+    flex-shrink: 0;
+  }
+
+  /* The second title block on the same slide (¿QUE TENES QUE TRAER?) */
+  .traer-block {
+    margin-top: 20px;
+  }
+  .traer-body {
+    font-size: clamp(16px, 1.8vw, 20px);
+    color: var(--brown-dark);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .traer-body span { font-weight: 800; color: var(--brown); }
+
+  /* ===== SLIDE 7: VALOR ===== */
+  .slide-valor {
+    background-color: #b09080;
+  }
+  .valor-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(52px, 8vw, 100px);
+    font-weight: 900;
+    color: var(--brown);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 20px;
+  }
+  .valor-price {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0;
+  }
+  .valor-price-box {
+    background: var(--brown);
+    padding: 16px 40px;
+    display: inline-block;
+  }
+  .valor-price-box span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(60px, 11vw, 140px);
+    font-weight: 900;
+    color: var(--cream-pale);
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .valor-iva {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(40px, 7vw, 90px);
+    font-weight: 900;
+    color: var(--brown);
+    letter-spacing: 0.04em;
+    margin-left: 16px;
+  }
+
+  /* ===== SLIDE 8: CONTACTO ===== */
+  .slide-contacto {
+    background-color: var(--cream-pale);
+  }
+  .contacto-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(80px, 13vw, 170px);
+    font-weight: 900;
+    color: var(--brown);
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -0.01em;
+    margin-bottom: 48px;
+    padding: 0 40px;
+  }
+  .contacto-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .contacto-item {
+    font-size: clamp(17px, 2.2vw, 24px);
+    color: var(--brown-dark);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .contacto-item strong { font-weight: 800; color: var(--brown); }
+  .contacto-item a {
+    color: var(--brown-dark);
+    text-decoration: none;
+  }
+  .contacto-item a:hover { text-decoration: underline; }
+  .instagram-handle {
+    font-style: italic;
+  }
+
+  /* Tab content toggle */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  /* For slides that change based on tab */
+  [data-tab] { display: none; }
+  [data-tab].active { display: flex; }
+
+  /* Shared between both PDFs: sections that are identical */
+  /* These are always visible */
+
+  /* ===== REVEAL ANIMATIONS ===== */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.32,0.72,0,1), transform 0.7s cubic-bezier(0.32,0.72,0,1);
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up-2 { transition-delay: 0.12s; }
+  .fade-up-3 { transition-delay: 0.22s; }
+  .fade-up-4 { transition-delay: 0.32s; }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .cover-top { padding: 20px 20px 0; }
+    .cover-title { font-size: clamp(100px, 28vw, 200px); }
+    .slide-who, .slide-offer { padding: 80px 24px 40px; }
+    .polaroid-row { height: 36%; }
+    .que-es-title, .exp-title, .act-title { padding: 0 20px; }
+    .que-es-body, .exp-stats, .exp-footnote, .act-list { padding: 0 24px; }
+    .contacto-title { padding: 0 20px; }
+    .contacto-item { font-size: 16px; }
+    .valor-iva { font-size: clamp(32px, 8vw, 60px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#cover" class="nav-logo">Chocolatón</a>
+  <ul class="nav-links">
+    <li><a href="#que-es">El Evento</a></li>
+    <li><a href="#actividades">Actividades</a></li>
+    <li><a href="#feriantes">Feriantes</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Consultar</a>
+</nav>
+
+<!-- ===== COVER ===== -->
+<section class="slide slide-cover" id="cover">
+  <div class="cover-top">
+    <span class="cover-date">4/07</span>
+    <div class="cover-logos">
+      <div class="logo-placeholder">esac</div>
+      <div class="logo-placeholder" style="border-radius:8px; font-size:9px;">PEHUEN<br>Coffee</div>
+      <div class="logo-placeholder" style="border-radius:8px; font-size:10px; line-height:1;">CO<br>MU<br>NA</div>
+    </div>
+    <span class="cover-org">COMUNA<br>CLUB</span>
+  </div>
+
+  <div class="cover-subtitle">Feria de Chocolate</div>
+  <div class="cover-subtitle-2">Segunda Edición</div>
+  <div class="cover-title fade-up">
+    <span>CHO</span>
+    <span>CO</span>
+    <span>LA</span>
+    <span class="drip">TÓN</span>
+  </div>
+
+  <div style="margin-top:32px;">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('feriantes')">Feriantes</button>
+      <button class="tab-btn" onclick="switchTab('sponsors')">Main Sponsor</button>
+    </div>
+  </div>
+
+  <div class="cover-banner">
+    <span class="cover-banner-text" id="banner-text">FERIANTES</span>
+  </div>
+</section>
+
+<!-- ===== QUE ES EL CHOCOLATON ===== -->
+<section class="slide slide-que-es" id="que-es">
+  <div class="que-es-title fade-up">¿Qué es el<br>Chocolatón?</div>
+  <div class="que-es-body">
+    <p class="fade-up fade-up-2">Es una feria de chocolate, pastelería y experiencias dulces de San Luis. En el marco de la Semana de la Dulzura, reúne a emprendedores, cafeterías, productores, marcas gastronómicas y amantes del chocolate en un evento único en la provincia.</p>
+    <p class="fade-up fade-up-3">Luego de una primera edición con gran convocatoria, el Chocolatón se consolida como una propuesta cultural y gastronómica de invierno, con actividades para toda la familia, experiencias participativas y una fuerte presencia de marcas y emprendedores locales.</p>
+    <div class="que-es-org fade-up fade-up-4">
+      <strong>Organizan:</strong>
+      <span>ESAC (Escuela Superior de Alta Cocina)</span>
+      <span>Pehuen Coffee Roasters</span>
+      <span>Comuna Club</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCIA 2025 ===== -->
+<section class="slide slide-exp" id="experiencia">
+  <div class="exp-title fade-up">Experiencia<br>2025</div>
+  <div class="exp-stats fade-up fade-up-2">
+    <span class="exp-underline">Chocolatón 2025 en números</span>
+    <p>
+      +<strong>1.200</strong> tickets vendidos<br>
+      +<strong>1.500</strong> personas presentes<br>
+      +<strong>100</strong> litros de chocolate caliente entregados<br>
+      +<strong>1000</strong> porciones dulces vendidas<br>
+      +<strong>500</strong> cafés y chocolates calientes vendidos por feriantes
+    </p>
+  </div>
+  <p class="exp-footnote fade-up fade-up-3">El <strong>Chocolatón</strong> es producido por el mismo equipo organizador de la <strong>Copa Súper Tazón</strong>, el campeonato de baristas de San Luis, que reunió a más de 700 personas en su edición 2025.</p>
+</section>
+
+<!-- ===== ACTIVIDADES 2026 ===== -->
+<section class="slide slide-act" id="actividades">
+  <div class="act-title fade-up">Actividades<br>2026</div>
+  <div class="act-list fade-up fade-up-2">
+    <p>
+      <strong>Degustación</strong> de chocolate incluida con la entrada<br>
+      <strong>Feria</strong> de emprendedores<br>
+      <strong>Pastelería y gastronomía</strong><br>
+      <strong>Cafeterías</strong> de especialidad<br>
+      <strong>Cocina participativa</strong> para infancias<br>
+      <strong>Inflables y espacios</strong> recreativos<br>
+      <strong>DJ set</strong><br>
+      <strong>Sorpresas edición 2026</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ===== FERIANTES: QUIENES PUEDEN PARTICIPAR ===== -->
+<section class="slide slide-who" id="feriantes" data-tab="feriantes">
+  <div class="who-content">
+    <h2 class="who-title fade-up">¿Quiénes pueden<br>participar como<br>feriantes?</h2>
+    <div class="who-body fade-up fade-up-2">
+      <p>Emprendedores, marcas, productores y artesanos que quieran visibilizar y vender sus productos dentro de un evento gastronómico y cultural de gran convocatoria.</p>
+      <p>Diseño, ilustración, decoración, indumentaria, arte, velas, cerámica, productos handmade y mucho más.</p>
+    </div>
+  </div>
+  <div class="polaroid-row">
+    <div class="polaroid"><div class="polaroid-inner pol-img-1">Foto evento</div></div>
+    <div class="polaroid"><div class="polaroid-inner pol-img-2">Foto evento</div></div>
+    <div class="polaroid"><div class="polaroid-inner pol-img-3">Foto evento</div></div>
+  </div>
+</section>
+
+<!-- ===== SPONSORS: POR QUE SER MAIN SPONSOR ===== -->
+<section class="slide slide-who" id="sponsors" data-tab="sponsors" style="background:#c0a888;">
+  <div class="who-content">
+    <h2 class="who-title fade-up">¿Por qué ser<br>Main Sponsor?</h2>
+    <div class="who-body fade-up fade-up-2">
+      <p>Ser <strong>Main Sponsor</strong> implica formar parte de una experiencia cultural y gastronómica en crecimiento, con fuerte impacto visual, presencia digital y llegada a nuevos públicos.</p>
+      <p>La marca contará con una participación destacada dentro de toda la comunicación y experiencia del evento, asociándose a una propuesta innovadora y con gran proyección regional.</p>
+    </div>
+  </div>
+  <div class="polaroid-row">
+    <div class="polaroid"><div class="polaroid-inner" style="background:linear-gradient(135deg,#504050 0%,#807060 100%);">Foto sponsor</div></div>
+    <div class="polaroid"><div class="polaroid-inner" style="background:linear-gradient(135deg,#303050 0%,#605060 100%);">Foto sponsor</div></div>
+  </div>
+</section>
+
+<!-- ===== FERIANTES: QUE TE OFRECEMOS / QUE TENES QUE TRAER ===== -->
+<section class="slide slide-offer" data-tab="feriantes">
+  <div>
+    <h2 class="offer-title fade-up">¿Qué te<br>ofrecemos?</h2>
+    <ul class="checklist fade-up fade-up-2">
+      <li><strong>Espacio</strong> de feria</li>
+      <li><strong>Instalación eléctrica</strong> básica</li>
+      <li><strong>Difusión</strong> en redes sociales</li>
+      <li><strong>Participación</strong> en un evento de amplia convocatoria</li>
+      <li><strong>Ambiente</strong> cultural y gastronómico</li>
+    </ul>
+    <div class="traer-block">
+      <h2 class="offer-title fade-up fade-up-2" style="font-size:clamp(48px,8vw,110px);">¿Qué tenés que<br>traer?</h2>
+      <p class="traer-body fade-up fade-up-3">
+        <span>Tus productos</span> — Materiales de exhibición — Alargues y conexiones adicionales si necesitás
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SPONSORS: BENEFICIOS ===== -->
+<section class="slide slide-offer" data-tab="sponsors" style="background:var(--cream-pale);">
+  <div>
+    <h2 class="offer-title fade-up" style="font-size:clamp(60px,10vw,130px);">Beneficios<br>de ser Main Sponsor</h2>
+    <ul class="bullet-list fade-up fade-up-2">
+      <li>Stand destacado con ubicación preferencial</li>
+      <li>Presencia en gráficas y comunicación oficial</li>
+      <li>Mención especial en redes sociales y contenidos audiovisuales</li>
+      <li>Inclusión en collarín de vaso de café</li>
+      <li>Posibilidad de activaciones, experiencias y sorteos de marca</li>
+      <li>Participación destacada durante el evento</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== VALOR ===== -->
+<section class="slide slide-valor" data-tab="feriantes" id="valor">
+  <div class="valor-title fade-up">Valor</div>
+  <div class="valor-price fade-up fade-up-2">
+    <div class="valor-price-box"><span>$40.000</span></div>
+    <span class="valor-iva">+ IVA</span>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="slide slide-contacto" id="contacto">
+  <div class="contacto-title fade-up">Contacto +<br>Consultas</div>
+  <div class="contacto-list fade-up fade-up-2">
+    <p class="contacto-item"><strong class="instagram-handle">Instagram</strong> — <a href="https://instagram.com/campeonatobaristassl" target="_blank">@campeonatobaristassl</a></p>
+    <p class="contacto-item"><strong>Santiago Tognelli ESAC</strong> — <a href="tel:+542664612654">2664612654</a></p>
+    <p class="contacto-item"><strong>José A. Miranda Bernal COMUNA</strong> — <a href="tel:+542664705174">2664705174</a></p>
+    <p class="contacto-item"><strong>Francisco Rodríguez PEHUÉN</strong> — <a href="tel:+542664587045">2664587045</a></p>
+  </div>
+</section>
+
+<script>
+  // Tab switching: show Feriantes or Sponsors content
+  function switchTab(tab) {
+    // Update buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`.tab-btn[onclick="switchTab('${tab}')"]`).classList.add('active');
+
+    // Show/hide data-tab sections
+    document.querySelectorAll('[data-tab]').forEach(el => {
+      el.classList.remove('active');
+    });
+    document.querySelectorAll(`[data-tab="${tab}"]`).forEach(el => {
+      el.classList.add('active');
+    });
+
+    // Update banner text
+    document.getElementById('banner-text').textContent =
+      tab === 'feriantes' ? 'FERIANTES' : 'MAIN SPONSOR';
+  }
+
+  // Init: show feriantes
+  switchTab('feriantes');
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
