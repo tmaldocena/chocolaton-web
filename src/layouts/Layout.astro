@@ -22,7 +22,7 @@ import '../styles/global.css';
     <svg style="position:fixed;width:0;height:0;overflow:hidden;pointer-events:none;" aria-hidden="true">
       <defs>
         <filter id="liquid">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
           <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="liquid" />
           <feComposite in="SourceGraphic" in2="liquid" operator="in" />
         </filter>
