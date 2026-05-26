@@ -13,10 +13,7 @@
 }
 
 body {
-  background-image: url('/images/texture.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
+  background-color: var(--color-brown);
 }
 
 /* Fade-up scroll animations */
