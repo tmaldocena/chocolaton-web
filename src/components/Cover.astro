@@ -11,13 +11,8 @@ const eventDate = new Date(2026, 6, 4); // July 4, 2026 (month is 0-indexed)
   </video>
   <div class="absolute inset-0 bg-brown/60 z-0"></div>
 
-  <div class="flex justify-between items-start w-full px-13 max-md:px-5 shrink-0 relative z-1 pt-16 max-md:pt-8">
+  <div class="flex justify-between items-start w-full px-13 max-md:px-5 shrink-0 relative z-1 pt-16">
     <span class="font-['Barlow_Condensed',sans-serif] text-[22px] max-md:text-[16px] font-900 text-cream-pale tracking-[0.04em]">4/07</span>
-    <div class="flex gap-4 items-center justify-center max-md:gap-2">
-      <img src={logoEsac} alt="ESAC" class="h-[56px] max-md:h-[46px] w-auto opacity-95" style="filter:brightness(0) invert(1)" />
-      <img src={logoPehuen} alt="Pehuen Coffee Roasters" class="h-[56px] max-md:h-[46px] w-auto opacity-95" style="filter:brightness(0) invert(1)" />
-      <img src={logoComuna} alt="Comuna Club" class="h-[56px] max-md:h-[46px] w-auto opacity-95" style="filter:brightness(0) invert(1)" />
-    </div>
     <span class="font-['Barlow_Condensed',sans-serif] text-[16px] max-md:text-[12px] font-900 text-cream-pale text-right leading-[1.1] tracking-[0.04em] max-md:hidden">
       COMUNA<br />CLUB
     </span>
@@ -63,6 +58,12 @@ const eventDate = new Date(2026, 6, 4); // July 4, 2026 (month is 0-indexed)
       <div class="font-['Barlow_Condensed',sans-serif] text-[13px] text-cream-pale/50 uppercase tracking-[0.15em] mt-1">
         para el Chocolatón
       </div>
+    </div>
+
+    <div class="flex gap-5 items-center justify-center mt-8 fade-up fade-up-4 relative z-2">
+      <img src={logoEsac} alt="ESAC" class="h-[44px] max-md:h-[36px] w-auto opacity-95" style="filter:brightness(0) invert(1)" />
+      <img src={logoPehuen} alt="Pehuen Coffee Roasters" class="h-[44px] max-md:h-[36px] w-auto opacity-95" style="filter:brightness(0) invert(1)" />
+      <img src={logoComuna} alt="Comuna Club" class="h-[44px] max-md:h-[36px] w-auto opacity-95" style="filter:brightness(0) invert(1)" />
     </div>
   </div>
 
